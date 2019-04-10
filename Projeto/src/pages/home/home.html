@@ -1,0 +1,28 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Pagina Principal</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list inset>
+    <ion-title>Escolha o Tamanho</ion-title>
+    <ion-item>
+      <ion-label>Tamanho</ion-label>
+      <ion-select [(ngModel)]="id" (ionChange)="pegaSabor(id)">
+        <ion-option *ngFor="let item of tamanhos; let i = index" value="{{item.id}}">{{ item.name }}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+ <ion-list>
+  <ion-title>Escolha os Sabores</ion-title>
+  <ion-item *ngFor="let items of sabores; let i = index">
+    <ion-label>Sabor: {{items.sabor}}</ion-label>
+    <ion-label>Preço: {{items.preco}} Reais</ion-label>
+    <ion-checkbox  [(ngModel)]="items.checked" (ionChange)="validaQuantidade(i)" [disabled]="limitCheck(i)" ></ion-checkbox>
+  </ion-item>
+ </ion-list>
+
+</ion-content>
